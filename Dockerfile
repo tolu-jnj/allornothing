@@ -22,7 +22,7 @@ COPY --from=builder /app/dist /var/www/html
 
 # Copy nginx config
 RUN echo 'server { \
-    listen 80; \
+    listen ${PORT:-80}; \
     root /var/www/html; \
     location / { \
         try_files $uri $uri/ /index.html; \
@@ -34,8 +34,11 @@ RUN echo 'server { \
     location /sw.js { \
         add_header Cache-Control "public, max-age=0, must-revalidate"; \
     } \
-}' > /etc/nginx/conf.d/default.conf
+}' > /etc/nginx/conf.d/default.conf.template
 
-EXPOSE 80
+# Install envsubst (comes with gettext)
+RUN apk add --no-cache gettext
 
-CMD ["nginx", "-g", "daemon off;"]
+EXPOSE 8080
+
+CMD ["sh", "-c", "envsubst '\\$PORT' < /etc/nginx/conf.d/default.conf.template > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"]
