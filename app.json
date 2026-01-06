@@ -8,6 +8,7 @@
   "userInterfaceStyle": "dark",
   "scheme": "dark",
   "assetBundlePatterns": ["**/*"],
+  "entryPoint": "./src/index.tsx",
   "web": {
     "favicon": "./assets/favicon.png",
     "name": "All or Nothing - Hotseat Dice Game",
