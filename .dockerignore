@@ -1,0 +1,17 @@
+.git
+.gitignore
+.env
+.env.local
+node_modules
+dist
+.next
+.vercel
+.railway
+logs.*.csv
+*.log
+README.md
+DEPLOYMENT.md
+DEPLOYMENT_READY.md
+.vscode
+.idea
+.DS_Store

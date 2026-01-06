@@ -1,0 +1,11 @@
+.git
+.gitignore
+.env
+.env.local
+node_modules
+dist
+.next
+.vercel
+.railway
+logs.*.csv
+*.log
