@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  aon:
+    build: .
+    ports:
+      - "8080:80"
+    container_name: all-or-nothing
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
